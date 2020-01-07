@@ -1,0 +1,10 @@
+{
+  "name": "EmployeeManagmentRestAPI",
+  "version": "1.0.0",
+  "description": "Awesomity Task Force Developer Challenge",
+  "main": "index.js",
+  "repository": "https://github.com/kwizeraelvis/EmployeeManagmentRestAPI.git",
+  "author": "Kwizera Aime Elvis <kwizeraelvis6@gmail.com>",
+  "license": "MIT",
+  "private":  false
+}
