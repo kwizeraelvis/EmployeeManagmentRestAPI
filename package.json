@@ -2,7 +2,12 @@
   "name": "EmployeeManagmentRestAPI",
   "version": "1.0.0",
   "description": "Awesomity Task Force Developer Challenge",
-  "main": "index.js",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon --exec babel-node src/index.js",
+    "start": "node dist/index.js",
+    "build": "babel src -s -d dist"
+  },
   "repository": "https://github.com/kwizeraelvis/EmployeeManagmentRestAPI.git",
   "author": "Kwizera Aime Elvis <kwizeraelvis6@gmail.com>",
   "license": "MIT",
@@ -10,8 +15,11 @@
   "dependencies": {
     "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",
+    "@babel/node": "^7.7.7",
+    "@babel/plugin-transform-runtime": "^7.7.6",
     "@babel/polyfill": "^7.7.0",
     "@babel/preset-env": "^7.7.7",
+    "@babel/runtime": "^7.7.7",
     "babel-jest": "^24.9.0",
     "bcrypt": "^3.0.7",
     "codecov": "^3.6.1",
