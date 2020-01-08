@@ -29,20 +29,20 @@ const CREATE_MANAGER_TABLE =
 )`
 const CREATE_EMPLOYEE=
 `insert into employees(id, empname,nationalid,email,phonenumber,dob,createdOn,status,postion)
-values($1,$2,$3,$4,$5,$6,$7,$8,$9)`;
+values($1,$2,$3,$4,$5,$6,$7,$8,$9) returning *`;
 const CREATE_MANAGER=
 `insert into manager (id, mangname,nationalid,email,phonenumber,dob,createdOn,status,postion,password)
-values($1,$2,$3,$4,$5,$6,$7,$8,$9)`;
+values($1,$2,$3,$4,$5,$6,$7,$8,$9) returning *`;
 const UPDATE_EMPLOYEE_INFO = 
 `update employees set empname = $1, nationalid = $2, email = $3, phonenumber = $4, dob = $5, modifiedOn = $6, status = $7, position = $8
-where id = $9; `
+where id = $9 returning *`
 const UPDATE_MANAGER_INFO = 
 `update employees set mangname = $1, nationalid = $2, email = $3, phonenumber = $4, dob = $5, modifiedOn = $6, status = $7, position = $8, password = 'default'
-where id = $10;`
+where id = $10 returning *`
 const ACTIVATE_EMPLOYEE=
-`update employees set status = $1 where id = $2`
+`update employees set status = $1 where id = $2 returning *`
 const SUSPEND_EMPLOYEE=
-`update employees set status = $1 where id = $2`
+`update employees set status = $1 where id = $2 returning *`
 const CHANGE_MANAGER_PASSWORD = `update manager set password = $1 where id = $2`;
 const GET_EMPLOYEE_BY_ID = `select * from employees where id = $1`
 const GET_MANAGER_BY_ID = `select * from manager where id - $1`
