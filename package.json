@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon --exec babel-node src/index.js",
     "start": "node dist/index.js",
-    "build": "babel src -s -d dist",
+    "build": "babel src -s -d dist"
   },
   "repository": "https://github.com/kwizeraelvis/EmployeeManagmentRestAPI.git",
   "author": "Kwizera Aime Elvis <kwizeraelvis6@gmail.com>",
@@ -34,6 +34,7 @@
     "nodemon": "^2.0.2",
     "pg": "^7.17.0",
     "supertest": "^4.0.2",
+    "uuid": "^3.3.3",
     "uuidv4": "^6.0.0"
   }
 }
