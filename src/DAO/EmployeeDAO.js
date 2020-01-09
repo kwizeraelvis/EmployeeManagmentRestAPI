@@ -68,4 +68,15 @@ export default new class EmployeeDAO{
             
         }
     }
+    async removeEmployee(id){
+        try{
+           const {rows} = await pool.query(DELETE_EMPLOYEE, [id]);
+           if(rows == null){
+               throw new Error('Unable to find employee')
+           }
+           return rows[0];
+        }catch(error){
+            console.log(error)
+        }
+    }
 }

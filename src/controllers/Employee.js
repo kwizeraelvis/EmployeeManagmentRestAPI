@@ -1,6 +1,4 @@
-import lodash from "lodash";
 import EmployeeDAO from "../DAO/EmployeeDAO";
-
 
 export default new class Employee {
   async createNewEmployee(req, res) {
@@ -69,6 +67,23 @@ export default new class Employee {
       message:"An error occured while performing the requested operation.More Details Below",
       Error: error
     })
+    }
+  }
+  async deleteEmployee(req,res){
+    try{
+      const deletedEmployee = await EmployeeDAO.removeEmployee(req.params.id);
+      return res.status(200).send({
+        message: "Employee was succesfully deleted",
+        DeletedEmloyee : {
+          EmployeeId: deletedEmployee.id,
+          EmployeeName: deletedEmployee.empname
+        }
+      })
+    }catch(error){
+      return res.status(400).send({
+        message:"An error occured while performing the requested operation.More Details Below",
+        Error: error
+      })
     }
   }
 }

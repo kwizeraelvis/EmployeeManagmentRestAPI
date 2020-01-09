@@ -7,7 +7,7 @@ const EmployeeRoutes = express.Router();
 EmployeeRoutes.post('/employees', Employee.createNewEmployee);
 EmployeeRoutes.put('/employees/:id',CheckEmployeeId,Employee.updateRegisteredEmployee);
 EmployeeRoutes.get('/employees/list', Employee.viewAllEmployees);
-EmployeeRoutes.get('/employees/:id', Employee.viewEmployeeById)
-
+EmployeeRoutes.get('/employees/:id', Employee.viewEmployeeById);
+EmployeeRoutes.delete('/employees/:id', Employee.deleteEmployee);
 
 export default EmployeeRoutes;

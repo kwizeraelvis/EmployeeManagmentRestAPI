@@ -54,8 +54,8 @@ const GET_EMPLOYEE_BY_ID = `select * from employees where id = $1`
 const GET_MANAGER_BY_ID = `select * from manager where id - $1`
 const GET_ALL_EMPLOYEES = `select * from employees`
 const GET_ALL_MANGERS = `select * from manager`
-const DELETE_EMPLOYEE = `delete from employees where id = $1`
-const DELETE_MANAGER = `delete from manager where id = $1`
+const DELETE_EMPLOYEE = `delete from employees where id = $1 returning *`
+const DELETE_MANAGER = `delete from manager where id = $1 returning *`
 
 export{
     CREATE_EMPLOYEE_TABLE,
