@@ -19,7 +19,31 @@ export default new class Employee {
       });
     } catch (error) {
       console.log(error)
-      return res.status(400).send(error);
+      return res.status(400).send({
+        message: "An error occured while creating the employee",
+        Error:{
+          error
+        }
+      });
+    }
+  }
+
+  async updateRegisteredEmployee(req, res){
+    try {
+    const UpdatedInfo = await EmployeeDAO.updateEmployee(req.property, req);
+    return res.status(200).send({
+      message: "The employee was updated",
+      NewEmployeeInfo: {
+        UpdatedInfo
+      }
+    })
+    } catch (error) {
+    return res.status(404).send({
+      message: "An error occuresd while updating the employee record",
+      Error : {
+        error
+      }
+    })
     }
   }
 }

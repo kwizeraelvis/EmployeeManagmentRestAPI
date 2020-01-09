@@ -33,9 +33,15 @@ values($1,$2,$3,$4,$5,$6,$7,$8,$9) returning *`;
 const CREATE_MANAGER=
 `insert into manager (id, mangname,nationalid,email,phonenumber,dob,createdOn,status,postion,password)
 values($1,$2,$3,$4,$5,$6,$7,$8,$9) returning *`;
+/**
+ * @deprecated
+ */
 const UPDATE_EMPLOYEE_INFO = 
-`update employees set empname = $1, nationalid = $2, email = $3, phonenumber = $4, dob = $5, modifiedOn = $6, status = $7, position = $8
-where id = $9 returning *`
+`update employees set empname = $1, nationalid = $2, email = $3, phonenumber = $4, dob = $5, modifiedOn = $6,postion = $7
+where id = $8 returning *`
+/**
+ * @deprecated
+ */
 const UPDATE_MANAGER_INFO = 
 `update employees set mangname = $1, nationalid = $2, email = $3, phonenumber = $4, dob = $5, modifiedOn = $6, status = $7, position = $8, password = 'default'
 where id = $10 returning *`

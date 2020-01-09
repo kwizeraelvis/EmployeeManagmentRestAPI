@@ -1,5 +1,4 @@
-import uuidv4 from 'uuid/v4'
-import moment from 'moment';
+import uuidv4 from 'uuid/v4';
 import _ from 'lodash';
 import {pool} from '../db/DbConnection';
 import {CREATE_EMPLOYEE_TABLE,CREATE_EMPLOYEE,UPDATE_EMPLOYEE_INFO,SUSPEND_EMPLOYEE,ACTIVATE_EMPLOYEE,DELETE_EMPLOYEE} from '../helpers/DBQueries';
@@ -30,6 +29,26 @@ export default new class EmployeeDAO{
             console.log(e);
         }finally{
             //ToDo
+        }
+    }
+
+    async updateEmployee(data, req){
+        try {
+            const values = [
+                req.body.empname || data.empname,
+                req.body.nationalid || data.nationalid,
+                req.body.email || data.email,
+                req.body.phonenumber || data.phonenumber,
+                data.dob,
+                new Date,
+                req.body.postion || data.postion,
+                req.params.id
+            ];
+            const {rows: updatedEmployee} = await pool.query(UPDATE_EMPLOYEE_INFO, values);
+            return updatedEmployee;
+            }
+        catch (error) {
+        console.log(error)
         }
     }
 }
