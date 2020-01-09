@@ -20,10 +20,8 @@ export default new class Employee {
     } catch (error) {
       console.log(error)
       return res.status(400).send({
-        message: "An error occured while creating the employee",
-        Error:{
-          error
-        }
+        message: "An error occured while performing the requested operation.More Details Below",
+        Error:error
       });
     }
   }
@@ -39,10 +37,23 @@ export default new class Employee {
     })
     } catch (error) {
     return res.status(404).send({
-      message: "An error occuresd while updating the employee record",
-      Error : {
-        error
-      }
+      message: "An error occured while performing the requested operation.More Details Below",
+      Error : error
+    })
+    }
+  }
+
+  async viewAllEmployees(req, res){
+    try {
+      const employees = await EmployeeDAO.getAllEmployees();
+      return res.status(200).send({
+        message: "List of all Employees",
+        employees
+      })
+    } catch (error) {
+    return res.status(400).send({
+      message:"An error occured while performing the requested operation.More Details Below",
+      Error: error
     })
     }
   }
