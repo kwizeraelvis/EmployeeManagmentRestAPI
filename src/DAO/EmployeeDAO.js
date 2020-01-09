@@ -1,7 +1,7 @@
 import uuidv4 from 'uuid/v4';
 import _ from 'lodash';
 import {pool} from '../db/DbConnection';
-import {CREATE_EMPLOYEE_TABLE,CREATE_EMPLOYEE,UPDATE_EMPLOYEE_INFO,SUSPEND_EMPLOYEE,ACTIVATE_EMPLOYEE,DELETE_EMPLOYEE, GET_ALL_EMPLOYEES} from '../helpers/DBQueries';
+import {CREATE_EMPLOYEE_TABLE,CREATE_EMPLOYEE,UPDATE_EMPLOYEE_INFO,SUSPEND_EMPLOYEE,ACTIVATE_EMPLOYEE,DELETE_EMPLOYEE, GET_ALL_EMPLOYEES, GET_EMPLOYEE_BY_ID} from '../helpers/DBQueries';
 
 export default new class EmployeeDAO{
     async init(){
@@ -57,6 +57,15 @@ export default new class EmployeeDAO{
             return allEmployees;
         }catch(error){
             console.log(error)
+        }
+    }
+    async getEmployeeById(id){
+        try{
+            const {rows: EmployeeById} = await pool.query(GET_EMPLOYEE_BY_ID, [id])
+            return EmployeeById;
+        }catch(error){
+            console.log(error);
+            
         }
     }
 }

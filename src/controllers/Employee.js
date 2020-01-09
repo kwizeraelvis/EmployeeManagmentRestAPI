@@ -57,4 +57,18 @@ export default new class Employee {
     })
     }
   }
+  async viewEmployeeById(req, res){
+    try {
+    const EmployeeRecord = await EmployeeDAO.getEmployeeById(req.params.id);
+    return res.status(200).send({
+      message: "Employee was found",
+      EmployeeRecord
+    })
+    } catch (error) {
+    return res.status(400).send({
+      message:"An error occured while performing the requested operation.More Details Below",
+      Error: error
+    })
+    }
+  }
 }
