@@ -9,5 +9,6 @@ EmployeeRoutes.put('/employees/:id',CheckEmployeeId,Employee.updateRegisteredEmp
 EmployeeRoutes.get('/employees/list', Employee.viewAllEmployees);
 EmployeeRoutes.get('/employees/:id', Employee.viewEmployeeById);
 EmployeeRoutes.delete('/employees/:id', Employee.deleteEmployee);
+EmployeeRoutes.put('/employees/:id/activate', Employee.employeeActivate)
 
 export default EmployeeRoutes;

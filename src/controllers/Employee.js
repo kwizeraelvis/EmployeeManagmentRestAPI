@@ -86,4 +86,23 @@ export default new class Employee {
       })
     }
   }
+
+  async employeeActivate(req, res){
+    try {
+      const activatedEmployee = await EmployeeDAO.activateEmployee(req);
+      return res.status(200).send({
+        message: "The Employee was succesfully activated",
+        ActivatedEmployeeProfile: {
+          EmployeeId: activatedEmployee.id,
+          EmployeeName: activatedEmployee.empname,
+          EmployeeStatus: activatedEmployee.status
+        }
+      })
+    } catch (error) {
+      return res.status(400).send({
+        message:"An error occured while performing the requested operation.More Details Below",
+        Error: error
+      })
+      }
+    }
 }

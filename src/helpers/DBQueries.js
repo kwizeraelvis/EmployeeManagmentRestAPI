@@ -46,9 +46,9 @@ const UPDATE_MANAGER_INFO =
 `update employees set mangname = $1, nationalid = $2, email = $3, phonenumber = $4, dob = $5, modifiedOn = $6, status = $7, position = $8, password = 'default'
 where id = $10 returning *`
 const ACTIVATE_EMPLOYEE=
-`update employees set status = $1 where id = $2 returning *`
+`update employees set status = $1, modifiedOn = $2 where id = $3 returning *`
 const SUSPEND_EMPLOYEE=
-`update employees set status = $1 where id = $2 returning *`
+`update employees set status = $1, modifiedOn = $2 where id = $3 returning *`
 const CHANGE_MANAGER_PASSWORD = `update manager set password = $1 where id = $2`;
 const GET_EMPLOYEE_BY_ID = `select * from employees where id = $1`
 const GET_MANAGER_BY_ID = `select * from manager where id - $1`
