@@ -105,4 +105,22 @@ export default new class Employee {
       })
       }
     }
+    async suspendEmployee(req, res){
+      try{
+        const suspendedEmployee = await EmployeeDAO.suspendEmployee(req.params.id);
+        return res.status(200).send({
+          message: "The Employee was suspended",
+          SuspendedEmployeeProfile:{
+            EmployeeId:suspendedEmployee.id,
+            EmployeeName:suspendedEmployee.empname,
+            EmployeeStatus:suspendedEmployee.status
+          }
+        })
+      }catch(error){
+        return res.status(400).send({
+          message:"An error occured while performing the requested operation.More Details Below",
+          Error: error
+        })
+      }
+    }
 }

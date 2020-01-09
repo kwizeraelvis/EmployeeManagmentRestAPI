@@ -27,6 +27,7 @@ export default new class EmployeeDAO{
             return rows[0];
         }catch(e){
             console.log(e);
+            return error;
         }finally{
             //ToDo
         }
@@ -49,6 +50,7 @@ export default new class EmployeeDAO{
             }
         catch (error) {
         console.log(error)
+        return error;
         }
     }
     async getAllEmployees(){
@@ -57,6 +59,7 @@ export default new class EmployeeDAO{
             return allEmployees;
         }catch(error){
             console.log(error)
+            return error;
         }
     }
     async getEmployeeById(id){
@@ -65,7 +68,7 @@ export default new class EmployeeDAO{
             return EmployeeById;
         }catch(error){
             console.log(error);
-            
+            return error;
         }
     }
     async removeEmployee(id){
@@ -77,6 +80,7 @@ export default new class EmployeeDAO{
            return rows[0];
         }catch(error){
             console.log(error)
+            return error;
         }
     }
     async activateEmployee(id){
@@ -92,6 +96,21 @@ export default new class EmployeeDAO{
             return activatedEmployee[0];
         } catch (error) {
             console.log(error);
+            return error;
+        }
+    }
+    async suspendEmployee(id){
+        try {
+            const data = {
+                status: "inactive",
+                modifiedOn: new  Date
+            }
+            const {rows: suspendedEmployee} = await pool.query(SUSPEND_EMPLOYEE, [data.status, data.modifiedOn, id]);
+            if(suspendedEmployee == null){throw new Error('Employee was not found')}
+            return suspendedEmployee[0];
+        } catch (error) {
+            console.log(error)
+            return error
         }
     }
 }
