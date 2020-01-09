@@ -89,7 +89,7 @@ export default new class Employee {
 
   async employeeActivate(req, res){
     try {
-      const activatedEmployee = await EmployeeDAO.activateEmployee(req);
+      const activatedEmployee = await EmployeeDAO.activateEmployee(req.params.id);
       return res.status(200).send({
         message: "The Employee was succesfully activated",
         ActivatedEmployeeProfile: {

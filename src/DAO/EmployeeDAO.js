@@ -79,13 +79,13 @@ export default new class EmployeeDAO{
             console.log(error)
         }
     }
-    async activateEmployee(req){
+    async activateEmployee(id){
         try {
             const data = {
                 status: "active",
                 modifiedOn: new Date
             }
-            const {rows: activatedEmployee} = await pool.query(ACTIVATE_EMPLOYEE, [data.status, data.modifiedOn, req.params.id])
+            const {rows: activatedEmployee} = await pool.query(ACTIVATE_EMPLOYEE, [data.status, data.modifiedOn, id])
             if(activatedEmployee == null){
                 throw new Error("Employee was not found")
             }
