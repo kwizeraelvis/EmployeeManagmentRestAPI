@@ -1,25 +1,26 @@
 import path from 'path';
 import {uploadDir} from '../helpers/DataPath'
 
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ * @deprecated Middleware is deprecated in favor of multer which will take over
+ * the function of uploading, checking file extension, overrall managing of
+ * the diskStorage 
+ */
 const CheckFileExtension = (req, res,next) => {
     let data = req.files.dataFile;
     let name = data.name.split('.');
+    let index = 0 ;
     if(name[1] != 'xlsx'){
         return res.status(400).send({
             Error: 'Invalid File type'
         })
     }
-    let index = 0
-    data.mv(path.join(uploadDir, `upload${index++}.xlsx`),(error) => {
-        if(error){
-            return res.status(500).send({
-                message: "An error occured while processing the desired operation",
-                Error: error
-            })
-        }
-        return res.status(200).send({
-            message: "File was succesfully uploaded"
-        })
+    res.status(200).send({
+        message: "File was succesfully uploaded"
     })
     next();
 }
