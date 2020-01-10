@@ -123,4 +123,7 @@ export default new class Employee {
         })
       }
     }
+    renderUploadPage(req,res){
+      res.render('index', {layout: false});
+    }
 }

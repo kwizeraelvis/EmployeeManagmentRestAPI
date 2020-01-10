@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>File Uploader</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="main-content">
+    <header>
+        <h1>File Uploader</h1>
+    </header>
+    <form ref='uploadform'
+    id="uploadform"
+    action="/employees/batchcreate"
+    enctype="multipart/form-data">
+
+    <input type="file" name="dataFile" id="fileupload_txt" />
+	<input type='submit' value='Upload!' id="submit_btn"/>
+
+    </form>
+    </div>
+
+    <footer>
+        <p>Created By: Kwizera Aime Elvis</p>
+    </footer>
+</body>
+</html>
