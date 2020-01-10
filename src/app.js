@@ -11,7 +11,11 @@ app.engine('.hbs', exphbs({extname: '.hbs'}))
 app.set('view engine', '.hbs');
 app.set('views', viewDir);
 app.use(express.static(publicDir))
-app.use(fileUpload())
+app.use(fileUpload({
+    useTempFiles : true,
+    tempFileDir: '/tmp/',
+    debug: true
+}))
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
