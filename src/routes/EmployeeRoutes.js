@@ -1,19 +1,21 @@
 import express from 'express';
 import Employee from '../controllers/Employee';
 import CheckEmployeeId from '../middleware/CheckEmployeeId';
-import CheckFileExtension from '../middleware/CheckFileExtension'
 import XlsxToJson from '../middleware/XlsxToJson'
 import multerUpload from '../utils/multerConfig'
-
+import {validateEmployeeRegister} from '../middleware/validateEmployeeRegister'
+import {validateEmployeeUpdate} from '../middleware/validateEmployeeUpdate'
+import {validateAge} from '../middleware/validateAge';
+import {validateId} from '../middleware/validateId';
 const EmployeeRoutes = express.Router();
 
-EmployeeRoutes.post('/employees', Employee.createNewEmployee);
-EmployeeRoutes.put('/employees/:id',CheckEmployeeId,Employee.updateRegisteredEmployee);
+EmployeeRoutes.post('/employees',validateAge,validateEmployeeRegister,Employee.createNewEmployee);
+EmployeeRoutes.put('/employees/:id',validateId,validateAge,CheckEmployeeId, validateEmployeeUpdate,Employee.updateRegisteredEmployee);
 EmployeeRoutes.get('/employees/list', Employee.viewAllEmployees);
-EmployeeRoutes.get('/employees/:id', Employee.viewEmployeeById);
-EmployeeRoutes.delete('/employees/:id', Employee.deleteEmployee);
-EmployeeRoutes.put('/employees/:id/activate', Employee.employeeActivate)
-EmployeeRoutes.put('/employees/:id/suspend', Employee.suspendEmployee)
+EmployeeRoutes.get('/employees/:id',validateId, Employee.viewEmployeeById);
+EmployeeRoutes.delete('/employees/:id',validateId, Employee.deleteEmployee);
+EmployeeRoutes.put('/employees/:id/activate',validateId, Employee.employeeActivate)
+EmployeeRoutes.put('/employees/:id/suspend',validateId, Employee.suspendEmployee)
 EmployeeRoutes.get('/file', Employee.renderUploadPage)
 EmployeeRoutes.post('/batchcreate', multerUpload.single('dataFile'), XlsxToJson)
 

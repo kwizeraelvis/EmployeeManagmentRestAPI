@@ -14,7 +14,7 @@ export default new class EmployeeDAO{
             data.nationalid,
             data.email,
             data.phonenumber,
-            new Date,
+            data.dob || new Date,
             new Date,
             data.status,
             data.postion
@@ -38,7 +38,7 @@ export default new class EmployeeDAO{
                 req.body.nationalid || data.nationalid,
                 req.body.email || data.email,
                 req.body.phonenumber || data.phonenumber,
-                data.dob,
+                req.body.dob || data.dob,
                 new Date,
                 req.body.postion || data.postion,
                 req.params.id
