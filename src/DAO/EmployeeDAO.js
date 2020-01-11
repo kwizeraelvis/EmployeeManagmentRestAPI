@@ -111,4 +111,14 @@ export default new class EmployeeDAO{
             return error
         }
     }
+    async searchEmployee(req){
+        try {
+        const key = Object.keys(req.body)
+        const value = req.body[`${key}`]
+        const {rows:searchedEmployee} = await pool.query(`select * from employees where ${key} = '${value}'`)
+        return searchedEmployee
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }

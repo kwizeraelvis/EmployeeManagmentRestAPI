@@ -126,4 +126,18 @@ export default new class Employee {
     renderUploadPage(req,res){
       res.render('index', {layout: false});
     }
+    async searchEmployee(req, res){
+      try{
+        const employee = await EmployeeDAO.searchEmployee(req);
+        return res.status(200).send({
+          message: "Employee was successfully found",
+          Employee: employee
+        })
+      }catch(error){
+        return res.status(400).send({
+          message: "An error occured while performing the requested operation",
+          Error: error
+        })
+      }
+    }
 }

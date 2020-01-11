@@ -18,5 +18,5 @@ EmployeeRoutes.put('/employees/:id/activate',validateId, Employee.employeeActiva
 EmployeeRoutes.put('/employees/:id/suspend',validateId, Employee.suspendEmployee)
 EmployeeRoutes.get('/file', Employee.renderUploadPage)
 EmployeeRoutes.post('/batchcreate', multerUpload.single('dataFile'), XlsxToJson)
-
+EmployeeRoutes.post('/employees/search', Employee.searchEmployee)
 export default EmployeeRoutes;
