@@ -27,12 +27,10 @@ export default new class EmployeeDAO{
             return rows[0];
         }catch(e){
             console.log(e);
-            return error;
         }finally{
             //ToDo
         }
     }
-
     async updateEmployee(data, req){
         try {
             const values = [
