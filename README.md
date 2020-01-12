@@ -59,7 +59,7 @@ the managment of employees at managerial point of view
 - [] Sending Email confirmation to Employee upon registration
 - [] Manager Password Reset
 - [] User Activity Logs
-- [] Heroku Deployment
+- [x] Heroku Deployment(Implemented)
 
 ## Available Endpoints
 
