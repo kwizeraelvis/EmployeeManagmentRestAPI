@@ -4,9 +4,9 @@
   "description": "Awesomity Task Force Developer Challenge",
   "main": "src/index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon --exec babel-node src/index.js",
     "build": "babel src -s -d dist",
-    "start": "babel-node dist/index.js"
+    "start": "babel-node dist/index.js",
+    "dev": "cross-env NODE_ENV=development nodemon --exec babel-node src/index.js"
   },
   "repository": "https://github.com/kwizeraelvis/EmployeeManagmentRestAPI.git",
   "author": "Kwizera Aime Elvis <kwizeraelvis6@gmail.com>",
