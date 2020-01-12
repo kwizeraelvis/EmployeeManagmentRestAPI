@@ -4,9 +4,13 @@
   "description": "Awesomity Task Force Developer Challenge",
   "main": "src/index.js",
   "scripts": {
-    "dev": "nodemon --exec babel-node src/index.js",
-    "start": "node dist/index.js",
-    "build": "babel src -s -d dist"
+    "dev": "cross-env NODE_ENV=development nodemon --exec babel-node src/index.js",
+    "build": "babel src -s -d dist",
+    "start": "node dist/index.js"
+  },
+  "engine":{
+    "node":"11.15.0",
+    "yarn": "1.21.1"
   },
   "repository": "https://github.com/kwizeraelvis/EmployeeManagmentRestAPI.git",
   "author": "Kwizera Aime Elvis <kwizeraelvis6@gmail.com>",
@@ -25,6 +29,7 @@
     "bcrypt": "^3.0.7",
     "codecov": "^3.6.1",
     "coveralls": "^3.0.9",
+    "cross-env": "^6.0.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-fileupload": "^1.1.6",
@@ -37,6 +42,8 @@
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "multer": "^1.4.2",
+    "nodemailer": "^6.4.2",
+    "nodemailer-express-handlebars": "^3.1.0",
     "nodemon": "^2.0.2",
     "pg": "^7.17.0",
     "supertest": "^4.0.2",

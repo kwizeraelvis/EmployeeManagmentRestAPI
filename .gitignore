@@ -112,4 +112,4 @@ coverage/
 .eslintrc.js
 src/dist
 dist/
-yarn*
+yarn.lock
