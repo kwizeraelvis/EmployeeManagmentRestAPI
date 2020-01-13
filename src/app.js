@@ -1,5 +1,4 @@
 import express from 'express';
-import fileUpload from 'express-fileupload'
 import exphbs from 'express-handlebars'
 import EmployeeRoutes from './routes/EmployeeRoutes'
 import {publicDir,viewDir, uploadDir} from './helpers/DataPath'

@@ -2,7 +2,7 @@ import uuidv4 from 'uuid/v4';
 import _ from 'lodash';
 import {pool} from '../db/DbConnection';
 import {CREATE_EMPLOYEE_TABLE,CREATE_EMPLOYEE,UPDATE_EMPLOYEE_INFO,SUSPEND_EMPLOYEE,ACTIVATE_EMPLOYEE,DELETE_EMPLOYEE, GET_ALL_EMPLOYEES, GET_EMPLOYEE_BY_ID} from '../helpers/DBQueries';
-
+import SendRegistrationEmail from '../utils/sendRegistrationEmail'
 export default new class EmployeeDAO{
     async init(){
         await pool.query(CREATE_EMPLOYEE_TABLE);
@@ -28,7 +28,7 @@ export default new class EmployeeDAO{
         }catch(e){
             console.log(e);
         }finally{
-            //ToDo
+            SendRegistrationEmail.sendEmail(data.email, data.empname);
         }
     }
     async updateEmployee(data, req){
