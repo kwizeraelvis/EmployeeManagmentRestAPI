@@ -56,11 +56,11 @@ the managment of employees at managerial point of view
 
 - [] Manager signup
 - [] Manager Signin
-- [] Sending Email confirmation to Employee upon registration
+- [x] Sending Email confirmation to Employee upon registration(Implemented + deployed)
 - [] Manager Password Reset
 - [] User Activity
-- [x] Heroku Deployment(Implemented)
-- [x] Add validation to data from excel worksheets(Implemented)
+- [x] Heroku Deployment(Implemented + deployed)
+- [x] Add validation to data from excel worksheets(Implemented + deployed)
 
 ## Available Endpoints
 
