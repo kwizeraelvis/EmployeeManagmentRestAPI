@@ -1,5 +1,6 @@
 import xlsx from 'xlsx';
 import EmployeeDAO from '../DAO/EmployeeDAO'
+import {EmployeeRegisterSchema} from '../helpers/JoiSchemas/EmployeeRegisterSchema';
 
 const XlsxToJson = (req, res, next) => {
     const upfile = xlsx.readFile(req.file.path,{cellDates: true});
@@ -10,9 +11,8 @@ const XlsxToJson = (req, res, next) => {
     })
     employees.forEach(async (employee) => {
         try{
-            const employeeData = await EmployeeDAO.createEmployee(employee);
-            console.log(employeeData)
-            
+            await EmployeeRegisterSchema.validateAsync(employee);
+            await EmployeeDAO.createEmployee(employee);
         }catch(error){
             return res.status(400).send({
                 message: "An error occured while processing your requested operation",

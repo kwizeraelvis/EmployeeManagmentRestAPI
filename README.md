@@ -60,6 +60,7 @@ the managment of employees at managerial point of view
 - [] Manager Password Reset
 - [] User Activity Logs
 - [x] Heroku Deployment(Implemented)
+- [ ] Add validation to data from excel worksheets
 
 ## Available Endpoints
 
